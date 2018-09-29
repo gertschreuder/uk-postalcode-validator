@@ -10,13 +10,27 @@ class ValidatorTests(unittest.TestCase):
         rel_path = 'data\\postcodes.csv'
         self.abs_file_path = os.path.join(script_dir, rel_path)
 
-    def test_validator(self):
+    def test_validatorStr(self):
         validator = Validator()
-        valid = validator.validate('23324')
+        valid = validator.validate('')
         self.assertFalse(valid)
-        valid = validator.validate('dfgdf')
+        valid = validator.validate(' ')
+        self.assertFalse(valid)
+        valid = validator.validate('auqywsdsad')
         self.assertFalse(valid)
 
+    def test_validatorNone(self):
+        validator = Validator()
+        valid = validator.validate(None)
+        self.assertFalse(valid)
+
+    def test_validatorClass(self):
+        validator = Validator()
+        valid = validator.validate(validator)
+        self.assertFalse(valid)
+
+    def test_validator(self):
+        validator = Validator()
         with open(self.abs_file_path) as csvfile:
             reader = csv.reader(csvfile, delimiter=',', quotechar='|')
             index = 0

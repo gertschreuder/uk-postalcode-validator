@@ -27,6 +27,7 @@
 							<arguments>
 								<argument>${basedir}\src\resources\setup.py</argument>
 								<argument>nosetests</argument>
+								<argument>--with-coverage</argument>
 							</arguments>
 						</configuration>
 					</execution>
