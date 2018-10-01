@@ -1,7 +1,11 @@
+#!/usr/bin/env python
+# coding=utf-8
+
 import unittest
 import os
 import csv
 from src.validator import Validator
+
 
 class ValidatorTests(unittest.TestCase):
 
@@ -36,13 +40,14 @@ class ValidatorTests(unittest.TestCase):
             index = 0
             for row in reader:
                 index = index + 1
-                #skip title row and only check in use postcodes
+                # skip title row and only check in use postcodes
                 if index > 1 and row[1] == "Yes":
                     valid = validator.validate(row[0])
-                    self.assertTrue(valid)                               
+                    self.assertTrue(valid)
 
     def tearDown(self):
         pass
+
 
 if __name__ == '__main__':
     unittest.main(exit=False)
